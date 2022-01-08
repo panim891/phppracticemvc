@@ -86,31 +86,161 @@ switch ($fav_fruit) {
 echo "<br>";
 
   //Php While loop
-   $y = 10;
-   while ($y <=10) {
+   $y = 1;
+   while ($y <= 5) {
      echo "The number is:$y<br>";
-     return 0;
+     $y++;
    }
    echo "<br>";
 
    //Php do-while loop
-   $y = 10;
+   $y = 1;
   do {
     echo "The number is: $y <br>";
-    return 0;
+    $y++;
   }
-   while ($y <=3);
+   while ($y <= 3);
    echo "<br>";
 
    //Php for loop
-   //for ($i=0; $i <= 10; $i++) { 
-   //  echo "The Numbers is: $i <br>";
-   //}
+   for ($i=0; $i <= 10; $i++) { 
+    echo "The Numbers is: $i <br>";
+   }
+   echo "<br>";
 
-   //Php array
+   // Php array
+    $cars = array("Volvo", "BMW", "Toyota");
+    echo "I like ".$cars[0].", ".$cars[1]." and ".$cars[2]."";
+    echo "<br>";
+
+   //index array
    $cars = array("Volvo", "BMW", "Toyota");
-   echo "I like ".$cars[0]."";
-?> 
+   $lengtharray = count($cars);
+   echo "<br>";
+   
+   for ($i=0; $i < $lengtharray; $i++) { 
+     echo $cars[$i];
+     echo "<br>";
+   }
+   echo "<br>";
 
+   //Associative Array
+   $age = array("Ansh" => "25", "Ayush" => "34", "Arush" => "45");
+   echo "Ansh Age is ".$age['Ansh']."";
+   echo "<br>";
+
+   //foreach loop
+   $age = array("Ansh" => "25", "Ayush" => "34", "Arush" => "45");
+   echo "<br>";
+
+   foreach ($age as $key => $value) {
+     echo "$key = $value <br><br>";
+   }
+   echo "<br>";
+
+   //Multi-dimensional array
+   $cars = array(
+           array("Volvo",30,15),
+           array("Ferrary",18,12),
+           array("BMW",50,47)
+   );
+   
+   echo "".$cars[0][0] .": In stock: ".$cars[0][1].", sell: ".$cars[0][2]."<br>";
+   echo "".$cars[1][0] .": In stock: ".$cars[1][1].", sell: ".$cars[1][2]."<br>";
+   echo "".$cars[2][0] .": In stock: ".$cars[2][1].", sell: ".$cars[2][2]."<br>";
+   echo "<br>";
+
+   //Php readfile
+   readfile('msg.txt');
+   echo "<br>";
+   echo "<br>";
+
+   //Php in_array
+   $food = array('Apple','Banana','Orange','Grapes');
+   if(in_array('Banana',$food)) {
+     echo "Find successfully";
+   }
+   else {
+    echo "Can not find";
+   }
+   echo "<br>";
+   echo "<br>";
+
+   //php isset
+   $a = 1;
+   if(isset($a)) {
+     echo "Present";
+   } 
+   else {
+     echo "absent";
+   }
+   echo "<br>";
+   echo "<br>";
+
+   //Php explode
+   $message = "Save Our Country.";
+   //explode(separator,string,limit)
+   $array = explode(" ",$message,1);
+   echo "<pre>";
+   print_r($array);
+   echo "</pre>";
+   echo "<br>";
+
+   //Php implode
+   $arr = array('Hello', 'Ruby');
+   $convert = implode(" ",$arr);
+   echo $convert;
+   echo "<br>";
+   echo "<br>";
+
+   //Php $_files and move_uploaded_file($tmp_name,destination)
+   if (isset($_FILES['image'])) {
+     echo "<pre>";
+     print_r($_FILES);
+     echo "</pre>";
+
+     $file_name = $_FILES['image']['name'];
+     $file_size = $_FILES['image']['size'];
+     $file_tmp = $_FILES['image']['tmp_name'];
+     $file_type = $_FILES['image']['type'];
+
+     move_uploaded_file($file_tmp,'upload/'.$file_name);
+   }
+   echo "<br>";
+   echo "<br>";
+
+   //cookies
+   $cookie_name = "user";
+   $cookie_value = "hello";
+
+   setcookie($cookie_name,$cookie_value,time()+(3600),"/");
+  if (isset($_COOKIE[$cookie_name])) {
+    echo "cookies is not set";
+  } 
+  else {
+    echo $_COOKIE[$cookie_name];
+  }
+  echo "<br>";
+  echo "<br>";
+
+
+
+?> 
+   <br><br>
+   <!--Php superglobals-->
+   <br>
+   <form action="index1.php" method="post">
+   Name: <input type="text" name="name"><br><br>
+   Email: <input type="email" name="email"><br><br>
+    <input type="submit" name="save">
+   </form>
+
+   <br><br>
+   <!--Php $_files and move_uploaded_file($tmp_name,destination);-->
+   <form action="" method = "POST" enctype="multipart/form-data">
+     <input type="file" name="image"><br><br>
+     <input type="submit">
+   </form>
+   <br>
 </body>
 </html>

@@ -7,15 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-<!-- Welcome: <?php echo $_POST["name"]; ?><br><br>
-Your Email <?php echo $_POST["email"]; ?> -->
- 
-<?php 
- echo "<pre>";
- print_r($_REQUEST);
- echo $_REQUEST["name"];
- echo $_REQUEST["email"];
+    <?php
+     include('new.php'); 
+    ?>
 
-?>
 </body>
 </html>
